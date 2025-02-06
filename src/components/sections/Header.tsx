@@ -7,7 +7,7 @@ import { useDisclosure } from '@heroui/modal'
 import CustomModal from '../../components/ui/Modal/CustomModal'
 import LoginInputs from '../ui/Inputs/LoginInputs'
 import CreateUserInputs from '../ui/Inputs/CreateUserInput'
-import CategoryList from '@/src/service/Category'
+import { CategoryList } from '@/src/service/Category'
 
 const Header = () => {
     const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure()
