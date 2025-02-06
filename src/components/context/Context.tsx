@@ -1,23 +1,17 @@
-"use client";
-import React, { createContext, ReactNode, SetStateAction, useState, useContext } from "react";
+"use client"
+import React, { createContext, ReactNode, SetStateAction, useState } from "react";
 
 interface ContextType {
-    token: string | null;
-    setToken: React.Dispatch<SetStateAction<null | string>>;
+    token: string | null
+    setAccessToken:React.Dispatch<SetStateAction<string | null>>
 }
 
 export const Context = createContext<ContextType>({
-    token: null,
-    setToken: () => "",
-});
+    token:null,
+    setAccessToken:() => ""
+})
 
-export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-    const [token, setToken] = useState<string | null>(localStorage.getItem("token") || null);
-
-    if (token) localStorage.setItem("token", token);
-    return (
-        <Context.Provider value={{ token, setToken }}>{children}</Context.Provider>
-    );
-};
-
-export const useAuth = () => useContext(Context);
+export const AuthContext:React.FC<{children:ReactNode}> = ({children}) => {
+    const [token, setAccessToken] = useState<string | null>(null)
+    return <Context.Provider value={{token, setAccessToken}}>{children}</Context.Provider>
+}

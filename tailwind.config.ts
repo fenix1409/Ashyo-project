@@ -1,10 +1,13 @@
+import {heroui} from '@heroui/theme';
 import type { Config } from "tailwindcss";
 
-export default {
+const config: Config = {
   content: [
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./node_modules/@heroui/theme/dist/components/(button|input|modal|ripple|spinner|form).js"
   ],
   theme: {
     extend: {
@@ -14,5 +17,7 @@ export default {
       },
     },
   },
-  plugins: [],
-} satisfies Config;
+  plugins: [heroui()],
+};
+
+export default config;
