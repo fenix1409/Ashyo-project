@@ -7,7 +7,7 @@ import { useDisclosure } from '@heroui/modal'
 import CustomModal from '../../components/ui/Modal/CustomModal'
 import LoginInputs from '../ui/Inputs/LoginInputs'
 import CreateUserInputs from '../ui/Inputs/CreateUserInput'
-import { CategoryList } from '@/src/service/Category'
+import { CategoryList } from '@/src/api/Category/Category'
 
 const Header = () => {
     const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure()
@@ -59,7 +59,7 @@ const Header = () => {
                     <button onClick={onOpen} className='cursor-pointer'><LoginIcon /></button>
                 </ul>
             </div>
-            <div className=""><CategoryList/></div>
+            <div className="pb-[29px]"><CategoryList/></div>
             <CustomModal setIsLogin={setIsLogin} isLogin={isLogin} isOpen={isOpen} onOpenChange={onOpenChange}>
                 {isLogin === "login" ? <LoginInputs onClose={onClose} /> : <CreateUserInputs setIsLogin={setIsLogin} />}
             </CustomModal>

@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react"
-import { instance } from "../components/hook/instance"
+import { instance } from "../../components/hook/instance"
 
 export interface CategoryType {
   id: number;
@@ -25,9 +25,9 @@ export const CategoryList = () => {
   return (
     <div>
       {categoryList.length > 0 ? (
-        <ul>
+        <ul className="flex items-center gap-[26px] justify-center">
           {categoryList.map((category) => (
-            <li key={category.id}>{category.name}</li>
+            <li key={category.id} className="text-[16px] leading-[21px] text-[#545D6A]">{category.name}</li>
           ))}
         </ul>
       ) : (

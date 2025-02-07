@@ -1,4 +1,4 @@
-import { useProducts } from '@/src/service/Product'
+import { useProducts } from '@/src/api/Product/Product'
 import React from 'react'
 
 const ProductCart = () => {
