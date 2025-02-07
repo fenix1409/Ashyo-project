@@ -30,7 +30,7 @@ const Banner = () => {
     id: banner.id,
     url: `${BASE_URL}${banner.image}`
   })) || [];
-  console.log(imageList);
+  console.log(imageList)
   
 
 return (
