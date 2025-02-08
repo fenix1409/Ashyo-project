@@ -1,7 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["ashyo.store"], // To'g'ri domen qo'shildi
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "ashyo.store",
+      },
+    ],
   },
 };
 

@@ -4,32 +4,37 @@ import React from 'react'
 const ProductCart = () => {
     const { data, isLoading, error } = useProducts(1, 100)
     const items = data?.products[0].productItems
-    // console.log(items);
-    // console.log(data?.products[0])
     const datas = data?.products
 
     if (isLoading) return <p>Yuklanmoqda...</p>
     if (error) return <p>Xatolik yuz berdi: {error.message}</p>
     return (
-        <div className="flex items-center gap-[30px]">
-            <h2>Jami mahsulotlar: {data?.totalCount}</h2>
-            <div className="flex items-center gap-[20px] flex-wrap">
-                {datas?.map((product) => (
-                    <div key={product.id} className="w-[300px] h-[100px] p-[15px] border-[2px] border-blue-500">
-                        <img src={product.image} alt={product.name} />
-                        <h3>{product.name}</h3>
-                        <p>{product.description}</p>
-                    </div>
-                ))}
+        <div className="flex flex-col gap-6 p-4">
+        <h2 className="text-2xl font-semibold text-gray-800">
+          Jami mahsulotlar: <span className="text-blue-600">{data?.totalCount}</span>
+        </h2>
+      
+        {/* Mahsulotlar */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {datas?.map((product) => (
+            <div key={product.id} className="bg-white shadow-md rounded-xl overflow-hidden border border-gray-200 transition hover:shadow-lg p-4">
+              <img src={product.image} alt={product.name} className="w-full h-40 object-cover rounded-lg"/>
+              <h3 className="text-lg font-semibold mt-2">{product.name}</h3>
+              <p className="text-gray-600 text-sm mt-1">{product.description}</p>
             </div>
-            <div className="flex items-center gap-[20px] flex-wrap">
-                {items?.map((item) => (
-                    <div key={item.id} className="w-[300px] h-[100px] p-[15px] border-[2px] border-blue-500">
-                        <h3>{item.name}</h3>
-                    </div>
-                ))}
-            </div>
+          ))}
         </div>
+      
+        {/* Items */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+          {items?.map((item) => (
+            <div key={item.id} className="bg-gradient-to-r from-blue-500 to-blue-700 text-white p-4 rounded-lg shadow-md transition hover:scale-105">
+              <h3 className="text-lg font-semibold">{item.name}</h3>
+            </div>
+          ))}
+        </div>
+      </div>
+      
     )
 }
 
