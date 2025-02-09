@@ -8,10 +8,11 @@ import CustomModal from '../../components/ui/Modal/CustomModal'
 import LoginInputs from '../ui/Inputs/LoginInputs'
 import CreateUserInputs from '../ui/Inputs/CreateUserInput'
 import { CategoryList } from '@/src/api/Category/Category'
+import VerifyEmailInputs from '../ui/Inputs/Verify'
 
 const Header = () => {
     const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure()
-    const [isLogin, setIsLogin] = useState<"login" | "createUser">("login")
+    const [isLogin, setIsLogin] = useState<"login" | "createUser" | "resetVerify">("login")
 
     return (
         <>
@@ -61,7 +62,9 @@ const Header = () => {
             </div>
             <div className="pb-[29px]"><CategoryList/></div>
             <CustomModal setIsLogin={setIsLogin} isLogin={isLogin} isOpen={isOpen} onOpenChange={onOpenChange}>
-                {isLogin === "login" ? <LoginInputs onClose={onClose} /> : <CreateUserInputs setIsLogin={setIsLogin} />}
+                {isLogin === "login" && <LoginInputs onClose={onClose} />}
+                {isLogin === "createUser" && <CreateUserInputs setIsLogin={setIsLogin} />}
+                {isLogin === "resetVerify" && <VerifyEmailInputs setIsLogin={setIsLogin} />}
             </CustomModal>
         </>
     )

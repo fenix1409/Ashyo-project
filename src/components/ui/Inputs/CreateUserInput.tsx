@@ -5,14 +5,14 @@ import { Input } from '@heroui/input'
 import { Button } from '@heroui/button'
 
 interface CreateUserType {
-    setIsLogin:React.Dispatch<SetStateAction<"login" | "createUser">>
+    setIsLogin:React.Dispatch<SetStateAction<"login" | "createUser" | "resetVerify">>
 }
 const CreateUserInputs: React.FC<CreateUserType> = ({setIsLogin}) => {
 
     function handleCreateUser(e: FormEvent<HTMLFormElement>) {
         e.preventDefault()
         const data = {
-            fullName: (e.target as HTMLFormElement).full_name.value,
+            fullName: (e.target as HTMLFormElement).fullName.value,
             email: (e.target as HTMLFormElement).email.value,
             password: (e.target as HTMLFormElement).password.value
         }
